@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<title></title>
+		<style>
+			.inner {
+				height: 150px;
+				background-color: pink;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<!<!--
+            	作者：631233828@qq.com
+            	时间：2020-02-03
+            	描述：@click.capture  优先触发事件
+            -->
+			<div class="inner" @click.capture="divHandler">
+				<!--@click.stop 点击的时候不会触发上一层div的促发事件-->
+				<input type="button" name="bt" id="bt" value="点击" @click.stop="btnHandler" />
+
+				<!--
+                	作者：631233828@qq.com
+                	时间：2020-02-03
+                	描述：@click.prevent 阻止默认行为，不会进行跳转
+                -->
+				<br/>
+				<a href="http://www.baidu.com" @click.prevent="linkClick">上百度查一查</a>
+
+				<br/>
+				<input type="button" name="bt" id="bt" value="优先触发button" @click="btnHandler" />
+
+				<br/>
+
+			</div>
+		<!--
+        	作者：631233828@qq.com
+        	时间：2020-02-03
+        	描述：使用@click.self 只有点击当前元素的时候才会生效
+        -->
+			<div class="inner" @click.self="divHandler">
+				<input type="button" name="bt" id="bt" value="只有点击自身才触发" @click.self="btnHandler" />
+
+			</div>
+			
+			<!<!--
+            	作者：631233828@qq.com
+            	时间：2020-02-03
+            	描述：@click.once 指挥触发一次
+            -->
+				<div class="inner" @click.self="divHandler">
+				<input type="button" name="bt" id="bt" value="只会触发一次" @click.once="btnHandler" />
+
+			</div>
+
+		</div>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {},
+				methods: {
+					divHandler() {
+						alert("innerdiv is click");
+					},
+					btnHandler() {
+						alert("btn is click");
+					},
+					linkClick() {
+						console.log("点击了查百度");
+					}
+				}
+
+			})
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<title></title>
+
+	</head>
+
+	<body>
+		<div id="app">
+			<input type="button" value="动起来" @click="go" />
+			<input type="button" value="停止" @click="stop" />
+			<h4>{{msg}}</h4>
+
+		</div>
+		<script>
+			//通过this关键字可以获取当前vm中的数据或方法
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					msg: '猥琐发育，动起来~！！~！！',
+					flag: null,
+				},
+				methods: {
+					go: function() {
+						this.flag == null ? this.flag = setInterval(() => {
+							if(this.flag!=null) {
+								var start = this.msg.substring(0, 1);
+								var end = this.msg.substring(1, this.msg.length);
+								this.msg = end + start;
+							}
+
+						}, 500):"";
+
+					},
+					stop: function() {
+						this.flag = null;
+					}
+
+				}
+
+			})
+		</script>
+
+	</body>
+
+</html>

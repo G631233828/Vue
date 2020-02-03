@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<title></title>
+		<style>
+			[v-cloak]{
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<!--使用v-cloak能够解决在页面加载的时候显示{{msg}}的问题-->
+			<p v-cloak>{{msg}}</p>
+			<!--使用v-text不会遇到值闪烁的问题-->
+			<h4 v-text="msg"></h4>
+			<!--使用v-html解析标签-->
+			<p v-html="msg2"> </p>
+			<!--v-bind显示绑定属性的值-->
+			<button type="button" v-bind:title="mytitle"> 按钮</button>
+			
+			<!--可以省略v-bind直接使用:title-->
+			<button type="button" :title="mytitle">省略v-bind</button>
+			<!--v-bind中的变量可以进行拼接-->
+			<button type="button" v-bind:title="mytitle+'对title进行了动态拼接'">动态拼接title</button>
+			<!--绑定了事件 vue中提供了v-on 事件绑定机制-->
+			<button type="button"  v-on:click="show" @click="show">点击我</button>
+		</div>
+		<script>
+			var vm = new Vue({
+				el:"#app",
+				data:{
+					msg:"使用v-cloak可以在未加载成功的时候进行隐藏操作",
+					msg2:"<h1>使用v-html 可以解析标签</h1>",
+					mytitle:"动态title 通过v-bind:title来使用"
+				},
+				methods:{//在methods属性中定义当前vue实例所有的可用方法
+					show:function(){
+						alert('hello');
+					}
+				}
+					
+			})
+			
+			/*document.getElementById("btn").onclick=function(){
+				alert("hello")
+			}*/
+		</script>
+
+	</body>
+
+</html>
