@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<title></title>
+
+	</head>
+
+	<body>
+		<div id="app">
+
+			<input type="text" v-model="n1" />
+
+			<select v-model="opt">
+				<option value="+">+</option>
+				<option value="-">-</option>
+				<option value="*">*</option>
+				<option value="/">/</option>
+			</select>
+
+			<input type="text" v-model="n2" />
+			<input type="button" value="=" @click="caculator" />
+			<input type="text" v-model="n3" />
+		</div>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					n1: 0,
+					n2: 0,
+					opt: "+",
+					n3: 0
+				},
+				methods: {
+					caculator() {
+						var n1 = parseInt(this.n1);
+						var n2 = parseInt(this.n2);
+						var opt = this.opt;
+						//					switch(opt){
+						//						case "+":
+						//							this.n3= n1+n2;
+						//							break;
+						//						case "-":
+						//							this.n3= n1-n2;
+						//							break;
+						//						case "*":
+						//						F	this.n3= n1*n2;
+						//							break;
+						//						case "/":
+						//							this.n3= n1/n2;
+						//							break;
+						//										
+						//					}
+						//↓ 正式项目尽量少用
+						this.n3 = eval(n1 + this.opt + n2);
+					}
+
+				}
+
+			})
+		</script>
+
+	</body>
+
+</html>

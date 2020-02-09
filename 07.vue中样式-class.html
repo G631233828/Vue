@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<title></title>
+	
+	<style>
+		.red{
+			color: red;
+		}
+		.thin{
+			font-weight: 200;
+		}
+		.italic{
+			font-style: italic;
+		}
+		.active{
+			letter-spacing: 0.5em;
+		}
+	</style>
+	
+	</head>
+
+	<body>
+		<div id="app">
+			
+			<h1 class="red thin italic active">这是一个很大的H1标签 01</h1>
+			<!--
+            	作者：631233828@qq.com
+            	时间：2020-02-09
+            	描述：直接传递一个数组，注意:这里的class需要使用v-bind做数据绑定
+            -->
+			<h1 :class="['red','active']">这是一个很大的H1标签 02</h1>
+			<!--
+            	作者：631233828@qq.com
+            	时间：2020-02-09
+            	描述：使用三目运算符判断flag 为true使用active标签
+            -->
+			<h1 :class="['red',flag?'active':'']">这是一个很大的H1标签 03</h1>
+			
+			<!--
+            	时间：2020-02-09
+            	描述：在数组中使用对象来代替三元表达式，提高代码的可读性
+            -->
+			<h1 :class="['red',{'active':flag}]">这是一个很大的H1标签 04</h1>
+			
+			<!--
+            	时间：2020-02-09
+            	描述：直接使用对象
+            -->
+			<h1 :class="{thin:true,italic:true,active:true}">这是一个很大的H1标签 05</h1>
+			
+			
+		</div>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					flag:false,
+				},
+				methods: {
+					
+
+				}
+
+			})
+		</script>
+
+	</body>
+
+</html>

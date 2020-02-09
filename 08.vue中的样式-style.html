@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<title></title>
+
+	</head>
+
+	<body>
+		<div id="app">
+			<h1 :style="{color:'red','font-weight':200}">style中的H1 01</h1>
+			<!--
+            	作者：631233828@qq.com
+            	时间：2020-02-09
+            	描述：在data中设置对象，并且赋值样式
+            -->
+			<h1 :style="style1">style中的H1 02</h1>
+			<!<!--
+            	作者：631233828@qq.com
+            	时间：2020-02-09
+            	描述：对象样式数组
+            -->
+				<h1 :style="[style1,style2]">style中的H1 02</h1>
+		</div>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					style1:{color:'red','font-weight':200},
+					style2:{'background-color':'green'},
+				},
+				methods: {
+					
+
+				}
+
+			})
+		</script>
+
+	</body>
+
+</html>
