@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<title></title>
+
+	</head>
+
+	<body>
+		<div id="app">
+			<input type="text" v-model="id" />
+			<input type="text" v-model="name" />
+			<input type="button" value="提交" @click="add" />
+			<!--
+            	作者：631233828@qq.com
+            	时间：2020-02-19
+            	描述：在组件中使用v-for的时候，或者在一些特殊情况中，如果v-for有问题，
+            	必须在使用v-for的同事，指定唯一的字符串/数字类型 ：key值
+            -->
+			<p v-for="item in list" :key="item.id">
+				<input type="checkbox" />{{item.id}}---{{item.name}}
+			</p>
+			
+			
+		</div>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					id:'',
+					name:'',
+					list:[
+					{id:1,name:"jack1"},
+					{id:2,name:"jack2"},
+					{id:3,name:"jack3"},
+					{id:4,name:"jack4"},
+					{id:5,name:"jack5"},
+					]
+				},
+				methods: {
+					add(){
+						
+						for(var i=0;i<this.list.length;i++){
+							if(this.list[i].id == this.id){
+								alert("不能添加重复id");
+								return;
+							}
+						}
+						this.list.push({id:this.id,name:this.name})
+					}
+
+				}
+
+			})
+		</script>
+
+	</body>
+
+</html>

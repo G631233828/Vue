@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="lib/vue.js"></script>
+		<title></title>
+
+	</head>
+
+	<body>
+		<div id="app">
+			<p v-for="(val,key) in list">{{val}}-{{key}}</p>
+		</div>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					list:[
+					{id:1,name:"chongming",price:200},
+					{id:2,name:"shanghai",price:300},
+					{id:3,name:"beijing",price:500},
+					{id:4,name:"nanjing",price:400},
+					{id:5,name:"guagnzhou",price:100},
+					]
+				},
+				methods: {
+					
+
+				}
+
+			})
+		</script>
+
+	</body>
+
+</html>
